@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="JensschControls" constructor="ChartViewer" version="1.0.3" display-name-key="ChartViewer" description-key="Sensor data chart viewer - visualizes CSV data from Dataverse file columns" control-type="virtual" >
+    <external-service-usage enabled="false">
+    </external-service-usage>
+
+    <!-- Bound property: CSV text content (Canvas apps pass data here, Model-Driven apps can leave empty) -->
+    <property name="csvData" display-name-key="CSV Data" description-key="Raw CSV text content. In Canvas apps, pass CSV text directly. In Model-Driven apps, the control reads from the file column instead." of-type="Multiple" usage="bound" required="true" />
+
+    <!-- Model-driven mode: logical name of the file column to read from -->
+    <property name="fileColumnName" display-name-key="File Column Name" description-key="Logical name of the Dataverse file column (default: jenssch_file)" of-type="SingleLine.Text" usage="input" required="false" />
+
+    <!-- Output: selected data point info -->
+    <property name="selectedPoint" display-name-key="Selected Point" description-key="JSON string of the selected data point" of-type="SingleLine.Text" usage="output" />
+
+    <resources>
+      <code path="index.ts" order="1"/>
+      <platform-library name="React" version="16.14.0" />
+      <!-- UNCOMMENT TO ADD MORE RESOURCES
+      <css path="css/ChartViewer.css" order="1" />
+      <resx path="strings/ChartViewer.1033.resx" version="1.0.0" />
+      -->
+    </resources>
+    <feature-usage>
+      <uses-feature name="Utility" required="true" />
+      <uses-feature name="WebAPI" required="false" />
+    </feature-usage>
+  </control>
+</manifest>
